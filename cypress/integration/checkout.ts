@@ -12,3 +12,11 @@ it("User successfully checkout", () => {
   checkoutPage.doCheckout("Dewi", "Mawaddah", "14045");
   checkoutPage.assertCheckout();
 });
+
+it("user failed checkout with firstname empty", () => {
+  loginPage.login(URL, "standard_user", "secret_sauce");
+  loginPage.assertLogin();
+
+  checkoutPage.doFailedCheckout("", "Mawaddah", "14045");
+  checkoutPage.assertFailCheckout();
+});

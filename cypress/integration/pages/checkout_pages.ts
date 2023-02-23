@@ -54,4 +54,47 @@ export class CheckoutPage {
     this.clickButtonContinue();
     this.clickButtonFinish();
   }
+
+  // start negative
+  clickBtnCart() {
+    cy.get(this.button_cart).click();
+  }
+
+  clickCart() {
+    cy.get(this.shopping_cart).click();
+  }
+
+  clickBtnCheckout() {
+    cy.get(this.button_checkout).click();
+  }
+
+  inputFirstname(firstname: any) {
+    cy.get(this.txt_firstname).type(firstname);
+  }
+
+  inputLastname(lastname: string) {
+    cy.get(this.txt_lastname).type(lastname);
+  }
+
+  inputZipCode(zipcode: string) {
+    cy.get(this.txt_zipcode).type(zipcode);
+  }
+
+  clickBtnContinue() {
+    cy.get(this.button_continue).click();
+  }
+
+  assertFailCheckout() {
+    cy.get(".error-message-container").should("be.visible").contains("Error: First Name is required");
+  }
+
+  doFailedCheckout(firstname: any, lastname: string, zipcode: string) {
+    this.clickBtnCart();
+    this.clickCart();
+    this.clickBtnCheckout();
+    this.inputLastname(lastname);
+    this.inputZipCode(zipcode);
+    this.clickBtnContinue();
+  }
+  // end negative
 }
