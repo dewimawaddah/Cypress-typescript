@@ -3,6 +3,6 @@ export class DashboardPage {
 
   sauceLabsBackpack() {
     cy.contains(this.link_sauceLabsBackpack).click();
-    cy.contains(this.link_sauceLabsBackpack).should("be.visible");
+    cy.contains("Sauce Labs Backpack").should("be.visible");
   }
 }
